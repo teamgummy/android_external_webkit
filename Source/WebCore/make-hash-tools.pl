@@ -20,8 +20,7 @@
 #   Boston, MA 02110-1301, USA.
 
 use strict;
-# use Switch;
-use feature qw(switch);
+use feature qw{ switch };
 use File::Basename;
 
 my $outdir = $ARGV[0];
@@ -39,7 +38,7 @@ when ("DocTypeStrings") {
 
     system("gperf --key-positions=\"*\" -s 2 $docTypeStringsGperf > $docTypeStringsGenerated") == 0 || die "calling gperf failed: $?";
 
-} # case "DocTypeStrings"
+} # when "DocTypeStrings"
 
 when ("ColorData") {
 
@@ -49,6 +48,6 @@ when ("ColorData") {
 
     system("gperf --key-positions=\"*\" -D -s 2 $colorDataGperf > $colorDataGenerated") == 0 || die "calling gperf failed: $?";
 
-} # case "ColorData"
+} # when "ColorData"
 
-} # switch ($option)
+} # given ($option)

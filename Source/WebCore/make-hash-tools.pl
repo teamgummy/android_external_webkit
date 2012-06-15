@@ -20,7 +20,8 @@
 #   Boston, MA 02110-1301, USA.
 
 use strict;
-use Switch;
+# use Switch;
+use feature qw(switch);
 use File::Basename;
 
 my $outdir = $ARGV[0];
@@ -28,9 +29,9 @@ shift;
 my $option = basename($ARGV[0],".gperf");
 
 
-switch ($option) {
+given ($option) {
 
-case "DocTypeStrings" {
+when ("DocTypeStrings") {
 
     my $docTypeStringsGenerated    = "$outdir/DocTypeStrings.cpp";
     my $docTypeStringsGperf        = $ARGV[0];
@@ -40,7 +41,7 @@ case "DocTypeStrings" {
 
 } # case "DocTypeStrings"
 
-case "ColorData" {
+when ("ColorData") {
 
     my $colorDataGenerated         = "$outdir/ColorData.cpp";
     my $colorDataGperf             = $ARGV[0];
